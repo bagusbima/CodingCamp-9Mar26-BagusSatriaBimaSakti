@@ -363,7 +363,7 @@ function displayRandomQuote() {
     }
 }
 
-displayRandomQuote(); // Panggil saat aplikasi dimuat
+displayRandomQuote();
 
 // ========================================
 // QUICK NOTES (AUTO-SAVE)
@@ -372,13 +372,13 @@ const notesInput = document.querySelector('.notes-input');
 
 function initQuickNotes() {
     if(notesInput) {
-        // Load catatan yang tersimpan
+        
         const savedNotes = localStorage.getItem('quickNotes');
         if (savedNotes) {
             notesInput.value = savedNotes;
         }
 
-        // Simpan setiap kali ada ketikan
+       
         notesInput.addEventListener('input', (e) => {
             localStorage.setItem('quickNotes', e.target.value);
         });
@@ -392,7 +392,7 @@ initQuickNotes();
 // ========================================
 const btnChangeBg = document.querySelector('.btn-change-bg');
 
-// Daftar tema background (Gradient Tailwind & Gambar dari Picsum/Unsplash)
+
 const bgThemes = [
     { id: 'default', classes: 'bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900' },
     { id: 'nature', classes: 'bg-gradient-to-br from-green-50 via-teal-50 to-emerald-50 dark:from-gray-900 dark:via-teal-900 dark:to-gray-900' },
@@ -403,33 +403,29 @@ const bgThemes = [
 function applyBackground(index) {
     const body = document.body;
     
-    // 1. Bersihkan semua class background sebelumnya
+   
     bgThemes.forEach(theme => {
         const classArray = theme.classes.split(' ');
         body.classList.remove(...classArray);
     });
     body.style.backgroundImage = ''; // Reset gambar
     
-    // 2. Terapkan background baru
+    
     const newTheme = bgThemes[index];
     const newClassArray = newTheme.classes.split(' ');
     body.classList.add(...newClassArray);
     
-    // Jika tema berupa gambar
+    
     if (newTheme.useImage) {
-        // Menggunakan Picsum karena stabil, menggunakan parameter blur tipis agar teks tetap terbaca
         body.style.backgroundImage = 'linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("https://picsum.photos/1920/1080?blur=1")';
         
-        // Aturan khusus jika dark mode aktif saat menggunakan gambar
         if (document.documentElement.classList.contains('dark')) {
             body.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://picsum.photos/1920/1080?blur=1")';
         }
     }
     
-    // Pastikan base class tidak hilang
     body.classList.add('min-h-screen', 'transition-colors', 'duration-300');
     
-    // Simpan ke localStorage
     localStorage.setItem('bgThemeIndex', index);
 }
 
@@ -439,7 +435,6 @@ function toggleBackground() {
     applyBackground(nextIndex);
 }
 
-// Inisialisasi Background saat load
 let savedBgIndex = parseInt(localStorage.getItem('bgThemeIndex') || 0);
 applyBackground(savedBgIndex);
 
