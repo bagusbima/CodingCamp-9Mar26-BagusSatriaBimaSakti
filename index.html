@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple productivity dashboard with focus timer, to-do list, and quick links">
+    <title>Life Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 min-h-screen transition-colors duration-300">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header Section: Greeting with Date/Time -->
+        <header class="greeting-section text-center mb-12">
+            <h1 class="greeting-message text-5xl md:text-6xl font-bold text-gray-800 dark:text-white mb-2 transition-colors">Good Morning</h1>
+            <p class="user-name text-2xl md:text-3xl text-indigo-600 dark:text-indigo-400 font-medium mb-6 cursor-pointer hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors">User</p>
+            <div class="datetime">
+                <p class="current-time text-4xl md:text-5xl font-light text-gray-700 dark:text-gray-200 mb-2 transition-colors">00:00:00</p>
+                <p class="current-date text-lg text-gray-600 dark:text-gray-400 transition-colors">Monday, January 1, 2024</p>
+            </div>
+            <p class="daily-quote text-md text-gray-500 dark:text-gray-400 mt-6 italic max-w-2xl mx-auto transition-colors">"Memuat inspirasi..."</p>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-content grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Focus Timer Section -->
+            <section class="focus-timer bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors">
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-2">
+                    <span>⏱️</span> Focus Timer
+                </h2>
+                <div class="timer-display text-6xl md:text-7xl font-bold text-center text-indigo-600 dark:text-indigo-400 mb-8 font-mono">25:00</div>
+                <div class="timer-controls flex gap-3 justify-center">
+                    <button class="btn-start bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-105 active:scale-95 shadow-md" aria-label="Start timer">Start</button>
+                    <button class="btn-stop bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-105 active:scale-95 shadow-md" aria-label="Stop timer">Stop</button>
+                    <button class="btn-reset bg-gray-500 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-105 active:scale-95 shadow-md" aria-label="Reset timer">Reset</button>
+                </div>
+            </section>
+
+            <!-- To-Do List Section -->
+            <section class="todo-section bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors">
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-2">
+                    <span>✓</span> To-Do List
+                </h2>
+                <form class="todo-form flex gap-2 mb-6">
+                    <input 
+                        type="text" 
+                        class="todo-input flex-1 px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 bg-white dark:bg-gray-700 text-gray-800 dark:text-white transition-colors" 
+                        placeholder="Add a new task..." 
+                        aria-label="New task input"
+                        autocomplete="off"
+                    >
+                    <button type="submit" class="btn-add-task bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg transition-all transform hover:scale-105 active:scale-95 shadow-md" aria-label="Add task">Add</button>
+                </form>
+                <ul class="todo-list space-y-2 max-h-96 overflow-y-auto" role="list">
+                    <!-- Tasks will be dynamically added here -->
+                </ul>
+            </section>
+            <section class="quick-notes bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors">
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-2">
+                    <span>📝</span> Quick Notes
+                </h2>
+                <textarea 
+                    class="notes-input w-full h-64 px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 bg-white dark:bg-gray-700 text-gray-800 dark:text-white transition-colors resize-none" 
+                    placeholder="Ketik ide dadakanmu di sini... (Otomatis tersimpan)"
+                    aria-label="Quick notes"
+                ></textarea>
+            </section>
+
+            <!-- ADD SOMETHING -->
+             <section class="quick-notes bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-2">Bingung Namabah Apa Biar Ga Kosong</h3>
+                <img src="./assets/saitama-opm.gif" alt="Saitama-OKE" width="400">
+            </section> 
+           
+
+            <!-- Quick Links Section -->
+            <section class="quick-links bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors lg:col-span-2">
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-2">
+                    <span>🔗</span> Quick Links
+                </h2>
+                <form class="link-form flex flex-col sm:flex-row gap-2 mb-6">
+                    <input 
+                        type="text" 
+                        class="link-name-input flex-1 px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 bg-white dark:bg-gray-700 text-gray-800 dark:text-white transition-colors" 
+                        placeholder="Link name..." 
+                        aria-label="Link name input"
+                        autocomplete="off"
+                    >
+                    <input 
+                        type="url" 
+                        class="link-url-input flex-1 px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 bg-white dark:bg-gray-700 text-gray-800 dark:text-white transition-colors" 
+                        placeholder="https://example.com" 
+                        aria-label="Link URL input"
+                        autocomplete="off"
+                    >
+                    <button type="submit" class="btn-add-link bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg transition-all transform hover:scale-105 active:scale-95 shadow-md" aria-label="Add link">Add Link</button>
+                </form>
+                <div class="links-container grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                    <!-- Links will be dynamically added here -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Settings/Theme Toggle -->
+        <aside class="settings fixed top-6 right-6 flex gap-3">
+            <button class="btn-change-bg bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-110 active:scale-95" aria-label="Ganti Background">
+                <span class="bg-icon text-2xl">🎨</span>
+            </button>
+            <button class="btn-theme-toggle bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-110 active:scale-95" aria-label="Toggle dark mode">
+                <span class="theme-icon text-2xl">🌙</span>
+            </button>
+            <button class="btn-edit-name bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-110 active:scale-95" aria-label="Edit user name">
+                <span class="edit-icon text-2xl">✏️</span>
+            </button>
+        </aside>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
